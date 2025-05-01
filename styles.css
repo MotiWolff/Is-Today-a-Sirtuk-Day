@@ -86,4 +86,19 @@ h1 {
     margin-top: 2rem;
     font-size: 1.5rem;
     color: #818181;
+}
+
+.attribution {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 1rem;
+}
+
+.attribution a {
+    color: #666;
+    text-decoration: none;
+}
+
+.attribution a:hover {
+    text-decoration: underline;
 } 
