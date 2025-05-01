@@ -8,8 +8,11 @@ async function isSirtukDay() {
     }
 
     try {
-        // Format today's date as YYYY-MM-DD
-        const formattedDate = today.toISOString().split('T')[0];
+        // Format today's date as YYYY-MM-DD using local time
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
 
         // Get Hebrew date from Hebcal API
         const response = await fetch(`https://www.hebcal.com/converter?cfg=json&date=${formattedDate}&g2h=1`);
@@ -34,7 +37,6 @@ async function isSirtukDay() {
         if (data.hm === "Iyyar" && data.hd === 18) return true;  // ל"ג בעומר
         if (data.hm === "Sivan" && (data.hd === 6 || data.hd === 7)) return true;  // שבועות (יומיים בחו"ל)
         
-
         // Add the Hebrew date to the page
         document.getElementById('date').textContent = data.hebrew;
 
@@ -56,4 +58,7 @@ async function updatePage() {
 }
 
 // Run when the page loads
-updatePage(); 
+updatePage();
+
+// Update the page every minute to handle date changes
+setInterval(updatePage, 60000); 
