@@ -4,8 +4,27 @@
     box-sizing: border-box;
 }
 
+/* Font face declarations with font-display */
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Lora Regular'), local('Lora-Regular'),
+         url('https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkq18ndeY9Z6JTg.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Lora Bold'), local('Lora-Bold'),
+         url('https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787z5vBJBkq18ndeY9Z6JTg.woff2') format('woff2');
+}
+
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Lora', Georgia, serif;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -41,13 +60,13 @@ h1 {
     font-weight: 400;
     margin-bottom: 4rem;
     line-height: 1.2;
-    color: #595959;
+    color: #333333;
 }
 
 .answer {
     font-size: 5rem;
     font-weight: 400;
-    color: #595959;
+    color: #333333;
 }
 
 #yes-no {
@@ -66,17 +85,17 @@ h1 {
 }
 
 .answer.yes {
-    color: #2ecc71;
-    background-color: #eafaf1;
+    color: #1a7a3a;
+    background-color: #e6f4ea;
 }
 
 .answer.no {
-    color: #e74c3c;
-    background-color: #fdedec;
+    color: #c62828;
+    background-color: #ffebee;
 }
 
 .reason {
-    color: #666;
+    color: #333333;
     font-size: 1.2rem;
     margin-top: 1rem;
     line-height: 1.5;
@@ -85,17 +104,17 @@ h1 {
 .date {
     margin-top: 2rem;
     font-size: 1.5rem;
-    color: #818181;
+    color: #4a4a4a;
 }
 
 .attribution {
     font-size: 0.8rem;
-    color: #999;
+    color: #4a4a4a;
     margin-top: 1rem;
 }
 
 .attribution a {
-    color: #666;
+    color: #1a73e8;
     text-decoration: none;
 }
 
