@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font face declarations with font-display */
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Lora Regular'), local('Lora-Regular'),
+         url('https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkq18ndeY9Z6JTg.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Lora Bold'), local('Lora-Bold'),
+         url('https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787z5vBJBkq18ndeY9Z6JTg.woff2') format('woff2');
+}
+
+body {
+    font-family: 'Lora', Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+.navbar {
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.hamburger {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    line-height: 1.2;
+    color: #333333;
+}
+
+.answer {
+    font-size: 5rem;
+    font-weight: 400;
+    color: #333333;
+}
+
+#yes-no {
+    display: block;
+    min-height: 6rem;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+}
+
+.answer.yes {
+    color: #1a7a3a;
+    background-color: #e6f4ea;
+}
+
+.answer.no {
+    color: #c62828;
+    background-color: #ffebee;
+}
+
+.reason {
+    color: #333333;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.date {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: #4a4a4a;
+}
+
+.attribution {
+    font-size: 0.8rem;
+    color: #4a4a4a;
+    margin-top: 1rem;
+}
+
+.attribution a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.attribution a:hover {
+    text-decoration: underline;
+} 
