@@ -1,11 +1,8 @@
+
 // Function to check if today is a Sirtuk day
 async function isSirtukDay() {
     const today = new Date();
-
-    // Check if it's Shabbat (day 6 is Saturday)
-    if (today.getDay() === 6) {
-        return true;
-    }
+    console.log('Current date:', today);
 
     try {
         // Format today's date as YYYY-MM-DD using local time
@@ -13,13 +10,30 @@ async function isSirtukDay() {
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
         const formattedDate = `${year}-${month}-${day}`;
+        console.log('Formatted date:', formattedDate);
 
         // Get Hebrew date from Hebcal API
+        console.log('Fetching from Hebcal API...');
         const response = await fetch(`https://www.hebcal.com/converter?cfg=json&date=${formattedDate}&g2h=1`);
+        console.log('API Response status:', response.status);
         const data = await response.json();
+        console.log('API Response data:', data);
 
         // Add the Hebrew date to the page
-        document.getElementById('date').textContent = data.hebrew;
+        const dateElement = document.getElementById('date');
+        console.log('Date element found:', !!dateElement);
+        if (dateElement) {
+            dateElement.textContent = data.hebrew;
+            console.log('Set date text to:', data.hebrew);
+        } else {
+            console.error('Date element not found in DOM');
+        }
+
+        // Check if it's Shabbat (day 6 is Saturday)
+        if (today.getDay() === 6) {
+            console.log('It is Shabbat');
+            return true;
+        }
 
         // Check for special dates
         if (data.hm === "Kislev" && (data.hd === 19 || data.hd === 20)) return true;  // י"ט-כ' כסלו
@@ -49,15 +63,27 @@ async function isSirtukDay() {
 
 // Update the page with the result
 async function updatePage() {
+    console.log('Starting page update...');
     // Show loading state
-    document.getElementById('yes-no').textContent = '...';
-    document.getElementById('date').textContent = 'Loading...';
+    const yesNoElement = document.getElementById('yes-no');
+    const dateElement = document.getElementById('date');
+    
+    console.log('Found elements:', {
+        yesNo: !!yesNoElement,
+        date: !!dateElement
+    });
+
+    if (yesNoElement) yesNoElement.textContent = '...';
+    if (dateElement) dateElement.textContent = 'Loading...';
 
     const isSirtuk = await isSirtukDay();
-    document.getElementById('yes-no').textContent = isSirtuk ? 'Yes' : 'No';
+    console.log('Is Sirtuk day:', isSirtuk);
+    
+    if (yesNoElement) yesNoElement.textContent = isSirtuk ? 'Yes' : 'No';
 }
 
 // Run when the page loads
+console.log('Initial page load...');
 updatePage();
 
 // Update the page every minute to handle date changes
