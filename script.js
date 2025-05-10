@@ -18,6 +18,9 @@ async function isSirtukDay() {
         const response = await fetch(`https://www.hebcal.com/converter?cfg=json&date=${formattedDate}&g2h=1`);
         const data = await response.json();
 
+        // Add the Hebrew date to the page
+        document.getElementById('date').textContent = data.hebrew;
+
         // Check for special dates
         if (data.hm === "Kislev" && (data.hd === 19 || data.hd === 20)) return true;  // י"ט-כ' כסלו
         if (data.hm === "Sh'vat" && (data.hd === 10 || data.hd === 11)) return true;  // י'-י"א שבט
@@ -37,9 +40,6 @@ async function isSirtukDay() {
         if (data.hm === "Iyyar" && data.hd === 18) return true;  // ל"ג בעומר
         if (data.hm === "Sivan" && (data.hd === 6 || data.hd === 7)) return true;  // שבועות (יומיים בחו"ל)
         
-        // Add the Hebrew date to the page
-        document.getElementById('date').textContent = data.hebrew;
-
         return false;
     } catch (error) {
         console.error('Error fetching Hebrew date:', error);
