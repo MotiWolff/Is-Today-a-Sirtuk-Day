@@ -1,4 +1,3 @@
-
 // Function to check if today is a Sirtuk day
 async function isSirtukDay() {
     const today = new Date();
